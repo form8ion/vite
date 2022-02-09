@@ -15,6 +15,8 @@ javascript projects
 * [Usage](#usage)
   * [Installation](#installation)
   * [Example](#example)
+    * [Import](#import)
+    * [Execute](#execute)
 * [Contributing](#contributing)
   * [Dependencies](#dependencies)
   * [Verification](#verification)
@@ -40,14 +42,15 @@ $ npm install @form8ion/vite --save-dev
 #### Import
 
 ```javascript
-import {scaffold} from './lib/index.cjs';
+import {projectTypes} from '@form8ion/javascript-core';
+import {scaffold} from '@form8ion/vite';
 ```
 
 #### Execute
 
 ```javascript
 (async () => {
-  await scaffold({projectRoot: process.cwd()});
+  await scaffold({projectRoot: process.cwd(), projectType: projectTypes.PACKAGE});
 })();
 ```
 
