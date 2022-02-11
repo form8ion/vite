@@ -1,6 +1,6 @@
 # vite
 
-form8ion plugin for managing [vite](https://vitejs.dev/) configuration in
+form8ion plugin for managing [Vite](https://vitejs.dev/) configuration in
 javascript projects
 
 <!--status-badges start -->
@@ -17,6 +17,9 @@ javascript projects
   * [Example](#example)
     * [Import](#import)
     * [Execute](#execute)
+  * [API](#api)
+    * [scaffold](#scaffold)
+      * [`projectRoot` __string__ (_required_)](#projectroot-string-required)
 * [Contributing](#contributing)
   * [Dependencies](#dependencies)
   * [Verification](#verification)
@@ -52,6 +55,18 @@ import {scaffold} from '@form8ion/vite';
   await scaffold({projectRoot: process.cwd()});
 })();
 ```
+
+### API
+
+#### scaffold
+
+Scaffolder for enabling [Vite](https://vitejs.dev/) for building a project.
+
+Takes a single options object as an argument, containing:
+
+##### `projectRoot` __string__ (_required_)
+
+path to the root of the project
 
 ## Contributing
 
