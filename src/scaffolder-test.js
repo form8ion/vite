@@ -19,9 +19,16 @@ suite('scaffolder', () => {
   test('that vite is configured', async () => {
     const projectRoot = any.string();
 
-    const results = await scaffold({projectRoot});
+    const {devDependencies, scripts} = await scaffold({projectRoot});
 
-    assert.deepEqual(results.devDependencies, ['vite']);
+    assert.deepEqual(devDependencies, ['vite']);
+    assert.deepEqual(
+      scripts,
+      {
+        'build:js': 'vite build',
+        watch: 'run-s \'build:js -- --watch\''
+      }
+    );
     assert.calledWith(configScaffolder.default, {projectRoot});
   });
 });
