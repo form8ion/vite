@@ -42,7 +42,6 @@ $ npm install @form8ion/vite --save-dev
 #### Import
 
 ```javascript
-import {projectTypes} from '@form8ion/javascript-core';
 import {scaffold} from '@form8ion/vite';
 ```
 
@@ -50,7 +49,7 @@ import {scaffold} from '@form8ion/vite';
 
 ```javascript
 (async () => {
-  await scaffold({projectRoot: process.cwd(), projectType: projectTypes.PACKAGE});
+  await scaffold({projectRoot: process.cwd()});
 })();
 ```
 
