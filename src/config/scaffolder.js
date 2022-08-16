@@ -6,7 +6,11 @@ export default async function ({projectRoot, projectType}) {
     `${projectRoot}/vite.config.js`,
     `import {defineConfig} from 'vite';
 
-export default defineConfig({})`
+export default defineConfig({
+  build: {
+    sourcemap: true
+  }
+});`
   );
 
   return {devDependencies: [...projectTypes.PACKAGE === projectType ? ['rollup-plugin-auto-external'] : []]};

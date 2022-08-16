@@ -27,7 +27,11 @@ suite('config scaffolder', () => {
       `${projectRoot}/vite.config.js`,
       `import {defineConfig} from 'vite';
 
-export default defineConfig({})`
+export default defineConfig({
+  build: {
+    sourcemap: true
+  }
+});`
     );
     assert.deepEqual(devDependencies, ['rollup-plugin-auto-external']);
   });
@@ -40,7 +44,11 @@ export default defineConfig({})`
       `${projectRoot}/vite.config.js`,
       `import {defineConfig} from 'vite';
 
-export default defineConfig({})`
+export default defineConfig({
+  build: {
+    sourcemap: true
+  }
+});`
     );
     assert.deepEqual(devDependencies, []);
   });

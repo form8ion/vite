@@ -11,7 +11,11 @@ Then('basic config is defined', async function () {
     configContents,
     `import {defineConfig} from 'vite';
 
-export default defineConfig({})`
+export default defineConfig({
+  build: {
+    sourcemap: true
+  }
+});`
   );
 });
 
@@ -24,6 +28,10 @@ Then('library mode is enabled', async function () {
     configContents,
     `import {defineConfig} from 'vite';
 
-export default defineConfig({})`
+export default defineConfig({
+  build: {
+    sourcemap: true
+  }
+});`
   );
 });
