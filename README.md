@@ -52,7 +52,7 @@ import {scaffold} from '@form8ion/vite';
 
 ```javascript
 (async () => {
-  await scaffold({projectRoot: process.cwd()});
+  await scaffold({projectRoot: process.cwd(), projectType: projectTypes.PACKAGE});
 })();
 ```
 
@@ -67,6 +67,10 @@ Takes a single options object as an argument, containing:
 ##### `projectRoot` __string__ (_required_)
 
 path to the root of the project
+
+##### `projectType` __string__ (_required_)
+
+Chosen type of possible JavaScript [project type](https://github.com/form8ion/javascript-core#projecttypes)
 
 ## Contributing
 
