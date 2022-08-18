@@ -27,10 +27,16 @@ Then('library mode is enabled', async function () {
   assert.equal(
     configContents,
     `import {defineConfig} from 'vite';
+import autoExternal from 'rollup-plugin-auto-external';
 
 export default defineConfig({
   build: {
-    sourcemap: true
+    sourcemap: true,
+    lib: {
+    },
+    rollupOptions: {
+      plugins: [autoExternal()]
+    }
   }
 });`
   );

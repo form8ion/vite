@@ -26,10 +26,16 @@ suite('config scaffolder', () => {
       fs.writeFile,
       `${projectRoot}/vite.config.js`,
       `import {defineConfig} from 'vite';
+import autoExternal from 'rollup-plugin-auto-external';
 
 export default defineConfig({
   build: {
-    sourcemap: true
+    sourcemap: true,
+    lib: {
+    },
+    rollupOptions: {
+      plugins: [autoExternal()]
+    }
   }
 });`
     );
