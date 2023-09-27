@@ -2,7 +2,7 @@
 // remark-usage-ignore-next 2
 import stubbedFs from 'mock-fs';
 import {projectTypes} from '@form8ion/javascript-core';
-import {scaffold} from './lib/index.cjs';
+import {scaffold} from './lib/index.cjs.js';
 
 // remark-usage-ignore-next
 stubbedFs();

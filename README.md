@@ -20,6 +20,7 @@ javascript projects
   * [API](#api)
     * [scaffold](#scaffold)
       * [`projectRoot` __string__ (_required_)](#projectroot-string-required)
+      * [`projectType` __string__ (_required_)](#projecttype-string-required)
 * [Contributing](#contributing)
   * [Dependencies](#dependencies)
   * [Verification](#verification)
