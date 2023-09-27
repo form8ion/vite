@@ -2,7 +2,7 @@ root: true
 
 rules:
   import/extensions:
-    - warn
+    - error
     - ignorePackages
 
 extends:
