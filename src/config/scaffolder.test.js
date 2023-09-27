@@ -1,29 +1,24 @@
-import {promises as fs} from 'fs';
+import {promises as fs} from 'node:fs';
 import {projectTypes} from '@form8ion/javascript-core';
 
-import sinon from 'sinon';
-import {assert} from 'chai';
+import {afterEach, describe, it, expect, vi} from 'vitest';
 import any from '@travi/any';
 
-import scaffoldConfig from './scaffolder';
+import scaffoldConfig from './scaffolder.js';
 
-suite('config scaffolder', () => {
-  let sandbox;
+vi.mock('node:fs');
+
+describe('config scaffolder', () => {
   const projectRoot = any.string();
 
-  setup(() => {
-    sandbox = sinon.createSandbox();
-
-    sandbox.stub(fs, 'writeFile');
+  afterEach(() => {
+    vi.clearAllMocks();
   });
 
-  teardown(() => sandbox.restore());
-
-  test('that the library mode is enabled for a package project-type', async () => {
+  it('should enable the library mode for a package project-type', async () => {
     const {devDependencies} = await scaffoldConfig({projectRoot, projectType: projectTypes.PACKAGE});
 
-    assert.calledWith(
-      fs.writeFile,
+    expect(fs.writeFile).toHaveBeenCalledWith(
       `${projectRoot}/vite.config.js`,
       `import {defineConfig} from 'vite';
 import autoExternal from 'rollup-plugin-auto-external';
@@ -39,14 +34,13 @@ export default defineConfig({
   }
 });`
     );
-    assert.deepEqual(devDependencies, ['rollup-plugin-auto-external']);
+    expect(devDependencies).toEqual(['rollup-plugin-auto-external']);
   });
 
-  test('that the library mode is not enabled for other project-types', async () => {
+  it('should not enable library mode for other project-types', async () => {
     const {devDependencies} = await scaffoldConfig({projectRoot, projectType: any.word()});
 
-    assert.calledWith(
-      fs.writeFile,
+    expect(fs.writeFile).toHaveBeenCalledWith(
       `${projectRoot}/vite.config.js`,
       `import {defineConfig} from 'vite';
 
@@ -56,6 +50,6 @@ export default defineConfig({
   }
 });`
     );
-    assert.deepEqual(devDependencies, []);
+    expect(devDependencies).toEqual([]);
   });
 });
