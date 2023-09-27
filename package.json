@@ -42,7 +42,7 @@
     "lint:sensitive": "ban",
     "prepare": "husky install",
     "lint:peer": "npm ls >/dev/null",
-    "lint:publish": "publint"
+    "lint:publish": "publint --strict",
     "lint:engines": "ls-engines"
   },
   "files": [
