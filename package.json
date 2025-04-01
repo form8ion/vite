@@ -16,7 +16,7 @@
   "main": "./lib/index.js",
   "sideEffects": false,
   "scripts": {
-    "test": "npm-run-all --print-label build --parallel lint:* --parallel test:*",
+    "test": "npm-run-all --print-label --parallel lint:* --parallel test:*",
     "pretest:integration:base": "run-s build",
     "lint:gherkin": "gherkin-lint",
     "test:integration": "run-s 'test:integration:base -- --profile noWip'",
@@ -43,7 +43,8 @@
     "prepare": "husky install",
     "lint:peer": "npm ls >/dev/null",
     "lint:publish": "publint --strict",
-    "lint:engines": "ls-engines"
+    "lint:engines": "ls-engines",
+    "pretest": "run-s build"
   },
   "files": [
     "example.js",
