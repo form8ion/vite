@@ -1,7 +1,7 @@
 import deepmerge from 'deepmerge';
 
 import any from '@travi/any';
-import {when} from 'jest-when';
+import {when} from 'vitest-when';
 import {afterEach, describe, it, expect, vi} from 'vitest';
 
 import scaffoldConfig from './config/scaffolder.js';
@@ -20,7 +20,7 @@ describe('scaffolder', () => {
     const projectType = any.word();
     const mergedResults = any.simpleObject();
     const configResults = any.simpleObject();
-    when(scaffoldConfig).calledWith({projectRoot, projectType}).mockResolvedValue(configResults);
+    when(scaffoldConfig).calledWith({projectRoot, projectType}).thenResolve(configResults);
     when(deepmerge.all).calledWith([
       {
         devDependencies: ['vite'],
@@ -30,7 +30,7 @@ describe('scaffolder', () => {
         }
       },
       configResults
-    ]).mockReturnValue(mergedResults);
+    ]).thenReturn(mergedResults);
 
     const results = await scaffold({projectRoot, projectType});
 

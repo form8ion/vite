@@ -1,10 +1,6 @@
 root: true
 
-rules:
-  import/extensions:
-    - error
-    - ignorePackages
-
 extends:
   - '@form8ion'
+  - '@form8ion/vitest'
   - '@form8ion/cucumber'
