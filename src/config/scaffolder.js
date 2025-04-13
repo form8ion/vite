@@ -27,5 +27,9 @@ export default defineConfig({
 });`
   );
 
-  return {devDependencies: [...projectTypes.PACKAGE === projectType ? ['rollup-plugin-auto-external'] : []]};
+  return {
+    dependencies: {
+      javascript: {development: [...projectTypes.PACKAGE === projectType ? ['rollup-plugin-auto-external'] : []]}
+    }
+  };
 }

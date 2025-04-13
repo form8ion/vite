@@ -16,7 +16,10 @@ describe('config scaffolder', () => {
   });
 
   it('should enable the library mode for a package project-type', async () => {
-    const {devDependencies} = await scaffoldConfig({projectRoot, projectType: projectTypes.PACKAGE});
+    const {dependencies: {javascript: {development}}} = await scaffoldConfig({
+      projectRoot,
+      projectType: projectTypes.PACKAGE
+    });
 
     expect(fs.writeFile).toHaveBeenCalledWith(
       `${projectRoot}/vite.config.js`,
@@ -34,11 +37,11 @@ export default defineConfig({
   }
 });`
     );
-    expect(devDependencies).toEqual(['rollup-plugin-auto-external']);
+    expect(development).toEqual(['rollup-plugin-auto-external']);
   });
 
   it('should not enable library mode for other project-types', async () => {
-    const {devDependencies} = await scaffoldConfig({projectRoot, projectType: any.word()});
+    const {dependencies: {javascript: {development}}} = await scaffoldConfig({projectRoot, projectType: any.word()});
 
     expect(fs.writeFile).toHaveBeenCalledWith(
       `${projectRoot}/vite.config.js`,
@@ -50,6 +53,6 @@ export default defineConfig({
   }
 });`
     );
-    expect(devDependencies).toEqual([]);
+    expect(development).toEqual([]);
   });
 });

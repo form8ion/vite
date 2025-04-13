@@ -7,7 +7,7 @@ export default async function ({projectRoot, projectType}) {
 
   return deepmerge.all([
     {
-      devDependencies: ['vite'],
+      dependencies: {javascript: {development: ['vite']}},
       scripts: {
         'build:js': 'vite build',
         watch: 'run-s \'build:js -- --watch\''

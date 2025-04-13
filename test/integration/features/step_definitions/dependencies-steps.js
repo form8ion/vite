@@ -2,7 +2,7 @@ import {Then} from '@cucumber/cucumber';
 import {assert} from 'chai';
 
 Then('vite is installed', async function () {
-  const {devDependencies} = this.scaffoldResult;
+  const {dependencies: {javascript: {development}}} = this.scaffoldResult;
 
-  assert.include(devDependencies, 'vite');
+  assert.include(development, 'vite');
 });
