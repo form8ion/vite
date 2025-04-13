@@ -23,7 +23,7 @@ describe('scaffolder', () => {
     when(scaffoldConfig).calledWith({projectRoot, projectType}).thenResolve(configResults);
     when(deepmerge.all).calledWith([
       {
-        devDependencies: ['vite'],
+        dependencies: {javascript: {development: ['vite']}},
         scripts: {
           'build:js': 'vite build',
           watch: 'run-s \'build:js -- --watch\''
